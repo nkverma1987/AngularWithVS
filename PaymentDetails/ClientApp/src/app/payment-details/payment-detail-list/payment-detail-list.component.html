@@ -1,0 +1,26 @@
+<table class="table table-hover table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Card Number
+      </th>
+      <th>
+        Expiry Date
+      </th>
+    </tr>
+  </thead>
+  <tr *ngFor="let pd of service.list">
+    <td (click)="populateForm(pd)">
+      {{pd.CardOwnerName}}
+    </td>
+    <td (click)="populateForm(pd)">
+      {{pd.CardNumber}}
+    </td>
+    <td (click)="populateForm(pd)">
+      {{pd.ExpirationDate}}
+    </td>
+  </tr>
+</table>
