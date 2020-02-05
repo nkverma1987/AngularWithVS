@@ -28,11 +28,15 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\app.component.css" />
     <None Remove="ClientApp\src\app\app.component.css" />
+    <None Remove="ClientApp\src\app\shared\selectrequiredvalidator.directive.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\employees\" />
-    <Folder Include="ClientApp\src\app\models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\shared\selectrequiredvalidator.directive.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

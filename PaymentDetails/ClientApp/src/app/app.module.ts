@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule,Routes } from '@angular/router';
 
+//for date picker control
+//import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -16,9 +19,15 @@ import { PaymentDetailService } from './shared/payment-detail-service';
 import { ListEmployeesComponent } from './employees/list-employees.component';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 
+import { SelectRequiredValidatorDirective } from './shared/selectrequiredvalidator.directive';
+
+
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //import { ToastrModule } from 'ngx-toastr';
+
+//import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
 
 const appRoutes: Routes = [
   { path: 'list', component: ListEmployeesComponent },
@@ -38,7 +47,8 @@ const appRoutes: Routes = [
     PaymentDetailComponent,
     PaymentDetailListComponent,
     ListEmployeesComponent,
-    CreateEmployeeComponent
+    CreateEmployeeComponent,
+    SelectRequiredValidatorDirective
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -51,6 +61,7 @@ const appRoutes: Routes = [
     //  { path: 'fetch-data', component: FetchDataComponent },
     //])
     RouterModule.forRoot(appRoutes)
+    //BsDatepickerModule.forRoot()
 
   ],
   providers: [PaymentDetailService],
