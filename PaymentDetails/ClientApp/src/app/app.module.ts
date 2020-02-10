@@ -20,7 +20,11 @@ import { ListEmployeesComponent } from './employees/list-employees.component';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 
 import { SelectRequiredValidatorDirective } from './shared/selectrequiredvalidator.directive';
+import { ConfirmEqualValidatorDirective } from './shared/confirmequalvalidatordirective ';
 
+//service
+import { EmployeeService } from './employees/employee.service';
+import { DisplayEmployeeComponent } from './employees/display-employee.component';
 
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -48,7 +52,9 @@ const appRoutes: Routes = [
     PaymentDetailListComponent,
     ListEmployeesComponent,
     CreateEmployeeComponent,
-    SelectRequiredValidatorDirective
+    SelectRequiredValidatorDirective,
+    ConfirmEqualValidatorDirective,
+    DisplayEmployeeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -64,7 +70,7 @@ const appRoutes: Routes = [
     //BsDatepickerModule.forRoot()
 
   ],
-  providers: [PaymentDetailService],
+  providers: [PaymentDetailService, EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

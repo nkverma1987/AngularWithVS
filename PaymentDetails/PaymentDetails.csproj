@@ -28,14 +28,12 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\app.component.css" />
     <None Remove="ClientApp\src\app\app.component.css" />
+    <None Remove="ClientApp\src\app\shared\confirmequalvalidatordirective .ts" />
     <None Remove="ClientApp\src\app\shared\selectrequiredvalidator.directive.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\employees\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\shared\confirmequalvalidatordirective .ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\selectrequiredvalidator.directive.ts" />
   </ItemGroup>
 
