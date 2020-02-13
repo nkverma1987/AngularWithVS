@@ -19,6 +19,7 @@ import { PaymentDetailService } from './shared/payment-detail-service';
 import { ListEmployeesComponent } from './employees/list-employees.component';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 
+
 import { SelectRequiredValidatorDirective } from './shared/selectrequiredvalidator.directive';
 import { ConfirmEqualValidatorDirective } from './shared/confirmequalvalidatordirective ';
 
@@ -32,10 +33,17 @@ import { DisplayEmployeeComponent } from './employees/display-employee.component
 
 //import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
+//route guard
+import { CreateEmployeeCanDeactivateGuardService } from './employees/create-employee-can-deactivate-gaurd.service';
+import { EmployeeDetailsComponent } from './employees/employee-details.component';
 
 const appRoutes: Routes = [
   { path: 'list', component: ListEmployeesComponent },
-  { path: 'create', component: CreateEmployeeComponent },
+
+  //{ path: 'create', component: CreateEmployeeComponent }, //earlier without route guard
+
+  { path: 'create', component: CreateEmployeeComponent, canDeactivate: [CreateEmployeeCanDeactivateGuardService] },
+  { path: 'employees/:id', component: EmployeeDetailsComponent },
   { path: '', redirectTo: '/list', pathMatch: 'full' },
   { path: 'paymentDetail', component: PaymentDetailsComponent },
 ];
@@ -54,7 +62,8 @@ const appRoutes: Routes = [
     CreateEmployeeComponent,
     SelectRequiredValidatorDirective,
     ConfirmEqualValidatorDirective,
-    DisplayEmployeeComponent
+    DisplayEmployeeComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -70,7 +79,7 @@ const appRoutes: Routes = [
     //BsDatepickerModule.forRoot()
 
   ],
-  providers: [PaymentDetailService, EmployeeService],
+  providers: [PaymentDetailService, EmployeeService, CreateEmployeeCanDeactivateGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

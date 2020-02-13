@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../models/employee.model';
 import { EmployeeService } from './employee.service';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   templateUrl: './list-employees.component.html',
@@ -12,7 +15,7 @@ export class ListEmployeesComponent implements OnInit {
   employeeToDisplay: Employee;
   private arrayIndex = 1;
 
-  constructor(private _employeeService: EmployeeService) { }
+  constructor(private _employeeService: EmployeeService, private _router: Router) { }
 
   ngOnInit() {
     this.employees = this._employeeService.getEmployees();
@@ -27,4 +30,8 @@ export class ListEmployeesComponent implements OnInit {
       this.arrayIndex = 1;
     }
   }
+  onClick(employeeId: number) {
+    this._router.navigate(['/employees', employeeId]);
+  }
+
 }
