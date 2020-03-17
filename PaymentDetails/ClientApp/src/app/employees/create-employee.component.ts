@@ -49,9 +49,17 @@ export class CreateEmployeeComponent implements OnInit {
 
   ngOnInit() {
   }
+  // 2 ways to reset form in ts file first as passing form template variable a s below
+  //saveEmployee(empForm: NgForm): void { 
+  //  this._employeeService.save(this.employee);
+  //  empForm.reset();
+  //  this._router.navigate(['list']);
+  //}
+  // second method
   saveEmployee(): void {
-    this._employeeService.save(this.employee);
+    const newEmployee: Employee = Object.assign({}, this.employee);
+    this._employeeService.save(newEmployee);
+    this.createEmployeeForm.resetForm();
     this._router.navigate(['list']);
   }
-
 }

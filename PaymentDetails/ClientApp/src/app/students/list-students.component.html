@@ -1,0 +1,45 @@
+<!--<div class="row">
+  <table class="tbl">
+    <tr>
+      <td>Name</td>
+      <td>City</td>
+    </tr>
+    <tr *ngFor="let student of students">
+      <td>
+        {{student.Name}}
+      </td>
+      <td>
+        {{student.City}}
+      </td>
+    </tr>
+  </table>
+</div>-->
+<div>
+  <div class="row  pull-right">
+    <a [routerLink]="['/createStudent']">
+      Back to List
+    </a>
+  </div>
+  <br />
+  <div class="row">
+    <ag-grid-angular style="width: 100%; height: 250px;"
+                     class="ag-theme-balham"
+                     [rowData]="students"
+                     [columnDefs]="columnDefs"
+                     [animateRows]="true"
+                     [getRowNodeId]="getRowNodeId">
+
+    </ag-grid-angular>
+
+
+  </div>
+  <div class="row">
+   
+  </div>
+</div>
+
+
+
+
+
+<!--{{students|json}}-->

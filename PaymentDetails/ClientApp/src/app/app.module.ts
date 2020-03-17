@@ -35,7 +35,17 @@ import { DisplayEmployeeComponent } from './employees/display-employee.component
 
 //route guard
 import { CreateEmployeeCanDeactivateGuardService } from './employees/create-employee-can-deactivate-gaurd.service';
+
 import { EmployeeDetailsComponent } from './employees/employee-details.component';
+import { CreatestudentComponent } from './students/createstudent.component';
+import { ListStudentsComponent } from './students/list-students.component';
+
+import { StudentServiceService } from './shared/student-service.service';
+
+import { AgGridModule } from 'ag-grid-angular';
+
+
+
 
 const appRoutes: Routes = [
   { path: 'list', component: ListEmployeesComponent },
@@ -46,6 +56,8 @@ const appRoutes: Routes = [
   { path: 'employees/:id', component: EmployeeDetailsComponent },
   { path: '', redirectTo: '/list', pathMatch: 'full' },
   { path: 'paymentDetail', component: PaymentDetailsComponent },
+  { path: 'createStudent', component: CreatestudentComponent },
+  { path: 'StudentList', component: ListStudentsComponent }
 ];
 
 @NgModule({
@@ -63,7 +75,9 @@ const appRoutes: Routes = [
     SelectRequiredValidatorDirective,
     ConfirmEqualValidatorDirective,
     DisplayEmployeeComponent,
-    EmployeeDetailsComponent
+    EmployeeDetailsComponent,
+    CreatestudentComponent,
+    ListStudentsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -77,9 +91,9 @@ const appRoutes: Routes = [
     //])
     RouterModule.forRoot(appRoutes)
     //BsDatepickerModule.forRoot()
-
+    , AgGridModule.withComponents([])
   ],
-  providers: [PaymentDetailService, EmployeeService, CreateEmployeeCanDeactivateGuardService],
+  providers: [PaymentDetailService, EmployeeService, CreateEmployeeCanDeactivateGuardService, StudentServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

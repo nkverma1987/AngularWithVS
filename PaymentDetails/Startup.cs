@@ -29,7 +29,7 @@ namespace PaymentDetails
                         (resolver as DefaultContractResolver).NamingStrategy = null;
 
                 });
-
+            services.AddScoped<IStudentRepository, SQLStudentRepository>();
             var connection = Configuration.GetConnectionString("DBConnection");
             services.AddDbContext<NitishContext>(options =>
             options.UseSqlServer(connection)

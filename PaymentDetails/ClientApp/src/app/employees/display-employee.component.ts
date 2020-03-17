@@ -1,6 +1,7 @@
 //import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { Component, OnInit, Input } from '@angular/core';
 import { Employee } from '../models/employee.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-display-employee',
@@ -8,6 +9,7 @@ import { Employee } from '../models/employee.model';
   styleUrls: ['./display-employee.component.css']
 })
 export class DisplayEmployeeComponent implements OnInit {
+  private selectedEmployeeId: number;
   //private _employeeId: number;
   //@Input()
   //set employeeId(val: number) {
@@ -28,11 +30,10 @@ export class DisplayEmployeeComponent implements OnInit {
   @Input()
   employee: Employee;
 
-  constructor() { }
+  constructor(private _route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.selectedEmployeeId = Number(this._route.snapshot.paramMap.get('id'));
   }
-  getNameAndGender(): string {
-    return this.employee.name + ' ' + this.employee.gender;
-  }
+  
 }

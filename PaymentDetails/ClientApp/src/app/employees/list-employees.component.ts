@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ListEmployeesComponent implements OnInit {
   employees: Employee[];
-
+  searchTerm: string;
   employeeToDisplay: Employee;
   private arrayIndex = 1;
 
