@@ -1,10 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StudentServiceService } from '../shared/student-service.service';
 import { Student } from '../models/student.model';
-import {
-  MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
-  MatSortModule, MatTableModule
-} from "angular-material";
 
 
 
@@ -17,8 +13,11 @@ export class ListStudentsComponent implements OnInit {
   @Input() childName: string;
   students: Student[];
 
-  private getRowNodeId;
-  rowDataClicked1 = {};
+
+  page = 1;
+  pageSize = 4;
+  collectionSize: any;
+
 
   columnDefs = [
     { headerName: 'Student Code', field: 'QualifiedId', sortable: true, filter: true },
@@ -39,6 +38,9 @@ export class ListStudentsComponent implements OnInit {
 
   ngOnInit() {
     this.getStudents();
+    this.collectionSize = this.students.length;
+    this.students.map((student, i) => ({ id: i + 1, student }))
+      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
     console.log(this.students);
   }
   getStudents(): void {
@@ -46,6 +48,16 @@ export class ListStudentsComponent implements OnInit {
       .toPromise()
       .then(
         res => this.students = res as Student[]
-      );
+      )
+  }
+
+  delete(id:number): void {
+    let del = confirm('Do you want to delete student?');
+    if (del) {
+      this.studentService.deleteStudent(id)
+        .subscribe(data => {
+          this.students = data as Student[];
+        })
+    }
   }
 }

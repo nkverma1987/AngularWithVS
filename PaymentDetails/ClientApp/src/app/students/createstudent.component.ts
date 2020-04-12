@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentServiceService } from '../shared/student-service.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Student } from '../models/student.model';
 
 
 @Component({
@@ -16,8 +17,10 @@ export class CreatestudentComponent implements OnInit {
   states: any;
   departments: any;
 
+  private selectedStudentId: number = 0;
+
   constructor(private studentService: StudentServiceService,
-    private _router: Router) {
+    private _router: Router, private _route: ActivatedRoute) {
 
   }
 
@@ -26,9 +29,12 @@ export class CreatestudentComponent implements OnInit {
     this.childbame = "lst";
     this.getCountries();
     this.getDepartments();
+    this.selectedStudentId = Number(this._route.snapshot.paramMap.get('studentId'));
+
     this.initialiseStudent();
 
-    console.log(this.studentService.student);
+
+    console.log(this.selectedStudentId);
   }
 
   getCountries() {
@@ -47,34 +53,74 @@ export class CreatestudentComponent implements OnInit {
 
   onChangeCountry(ev) {
     console.log(ev.target.value);
-    this.states = this.studentService.getStates(ev.target.value).
+    this.getStates(ev.target.value);
+  }
+
+  getStates(countryId: number): void {
+    this.states = this.studentService.getStates(countryId).
       subscribe(res => {
         this.states = res;
       });
   }
+
   initialiseStudent(): void {
-    this.studentService.student = {
-      City: '',
-      Class: '',
-      Country: "-1",
-      Department: '-1',
-      Email: "",
-      Id: 0,
-      Name: "",
-      Phone: "",
-      QualifiedId: "",
-      State: '-1'
+    if (this.selectedStudentId === 0) {
+      this.studentService.student = {
+        City: '',
+        Class: '',
+        Country: "-1",
+        Department: '-1',
+        Email: "",
+        Id: 0,
+        Name: "",
+        Phone: "",
+        QualifiedId: "",
+        State: '-1'
+      }
+    }
+    else {
+      this.getStudent();
+      this.getStates(Number(this.studentService.student.Country));
     }
   }
+
+  createStudent(): void {
+    if (this.selectedStudentId === 0) {
+      this.saveStudent();
+    }
+    else {
+      this.updateStudent();
+    }
+    this._router.navigate(['StudentList']);
+  }
+
   saveStudent(): void {
     this.studentService.saveStudent().subscribe(
       res => {
-        this.initialiseStudent();       
+        this.initialiseStudent();
       },
       err => {
         console.log(err);
       }
     );
-    this._router.navigate(['StudentList']);
+  }
+
+  updateStudent(): void {
+    this.studentService.editStudent().subscribe(
+      res => {
+        this.initialiseStudent();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  getStudent(): void {
+    this.studentService.getStudent(this.selectedStudentId)
+      .toPromise()
+      .then(
+        res => this.studentService.student = res as Student
+      )
   }
 }

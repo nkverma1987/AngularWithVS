@@ -19,8 +19,16 @@ namespace PaymentDetails.Controllers
         [HttpGet("GetCountries")]
         public List<Country> GetCountries()
         {
-            Country country = new Country(_configuration);
-            var countries = country.GetCountries();
+            var countries = new List<Country>();
+            try
+            {
+                var country = new Country(_configuration);
+                countries = country.GetCountries();
+            }
+            catch (System.Exception ex)
+            {
+                Log.LodInfo(_configuration, ex.Message, "GetCountries");
+            }
             return countries;
         }
         [HttpGet("GetStatesByCountry")]
@@ -38,8 +46,31 @@ namespace PaymentDetails.Controllers
         [HttpPost("SaveStudent")]
         public IActionResult SaveStudent([FromBody] Student student)
         {
-            _studentRepository.Save(student);
+            try
+            {
+                _studentRepository.Save(student);
+                return Json("ok");
+            }
+            catch (System.Exception ex)
+            {
+                Log.LodInfo(_configuration, ex.Message, JsonConvert.SerializeObject(student));
+                return Json(ex.Message);
+            }
+
+        }
+        [HttpPut("EditStudent")]
+        public IActionResult EditStudent(int id, [FromBody] Student student)
+        {
+            _studentRepository.Edit(student, id);
             return Json("ok");
+        }
+
+        [HttpDelete("DeleteStudent")]
+        public IActionResult DeleteStudent(int id)
+        {
+            _studentRepository.Delete(id);
+            var students = _studentRepository.GetStudents();
+            return Json(students);
         }
 
         [HttpGet("GetStudents")]
@@ -47,6 +78,12 @@ namespace PaymentDetails.Controllers
         {
             var students = _studentRepository.GetStudents();
             return Json(students);
+        }
+        [HttpGet("GetStudent")]
+        public IActionResult GetStudent(int id)
+        {
+            var student = _studentRepository.GetStudent(id);
+            return Json(student);
         }
     }
 }

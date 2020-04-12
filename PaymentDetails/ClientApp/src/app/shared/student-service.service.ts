@@ -26,7 +26,19 @@ export class StudentServiceService {
     return this.http.post(this.rootURL + 'SaveStudent', this.student);
   }
 
+  editStudent() {
+    return this.http.put(this.rootURL + 'EditStudent?id='+ this.student.Id, this.student);
+  }
+
   getStudents() {
     return this.http.get(this.rootURL + 'GetStudents');
+  }
+
+  getStudent(id: number) {
+    return this.http.get(this.rootURL + 'GetStudent?id=' + id);
+  }
+
+  deleteStudent(id: number) {
+    return this.http.delete(this.rootURL + 'DeleteStudent?id=' + id);
   }
 }

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule,Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 //for date picker control
 //import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
@@ -43,6 +43,9 @@ import { ListStudentsComponent } from './students/list-students.component';
 import { StudentServiceService } from './shared/student-service.service';
 
 import { AgGridModule } from 'ag-grid-angular';
+import { EmployeeFilterPipe } from '../app/employees/employee-filter.pipe';
+import { TestComponent } from './test/test.component';
+import { TestEmpComponent } from './test-emp/test-emp.component';
 
 
 
@@ -77,13 +80,16 @@ const appRoutes: Routes = [
     DisplayEmployeeComponent,
     EmployeeDetailsComponent,
     CreatestudentComponent,
-    ListStudentsComponent
+    ListStudentsComponent,
+    EmployeeFilterPipe,
+    TestComponent,
+    TestEmpComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-   // BrowserAnimationsModule, ToastrModule.forRoot(),
+    // BrowserAnimationsModule, ToastrModule.forRoot(),
     //RouterModule.forRoot([
     //  { path: '', component: HomeComponent, pathMatch: 'full' },
     //  { path: 'counter', component: CounterComponent },
