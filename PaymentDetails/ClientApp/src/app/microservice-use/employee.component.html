@@ -1,0 +1,43 @@
+
+<div>
+  <div class="row  pull-right">
+    <a [routerLink]="['/createemployeeMS']">
+      New Employee
+    </a>
+  </div>
+  <br />
+
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Department</th>
+          <th scope="col">Email</th>
+          <th scope="col">City</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.Name }}</td>
+          <td>{{ employee.DepartmentId }}</td>
+          <td>{{ employee.Email }}</td>
+          <td>{{ employee.City }}</td>
+          <td>
+            <a [routerLink]="['/createemployeeMS',{employeeId:employee.Id}]">
+              <span class="glyphicon glyphicon-edit"></span>
+            </a>
+            | <a (click)="deleteEmployee(employee.Id)">
+              <span class="glyphicon glyphicon-trash"></span>
+            </a>
+            | <a data-toggle="modal" data-target="#myModal">
+              <span class="glyphicon glyphicon-eye-open"></span>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

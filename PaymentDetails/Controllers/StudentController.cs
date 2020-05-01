@@ -56,7 +56,6 @@ namespace PaymentDetails.Controllers
                 Log.LodInfo(_configuration, ex.Message, JsonConvert.SerializeObject(student));
                 return Json(ex.Message);
             }
-
         }
         [HttpPut("EditStudent")]
         public IActionResult EditStudent(int id, [FromBody] Student student)

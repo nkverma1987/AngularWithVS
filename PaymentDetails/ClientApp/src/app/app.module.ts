@@ -46,8 +46,14 @@ import { AgGridModule } from 'ag-grid-angular';
 import { EmployeeFilterPipe } from '../app/employees/employee-filter.pipe';
 import { TestComponent } from './test/test.component';
 import { TestEmpComponent } from './test-emp/test-emp.component';
+import { EmployeeComponent } from './microservice-use/employee.component';
 
+import { ApiserviceService } from '../app/microservice-use/apiservice.service';
+import { CreateEmployeeComponentMS } from '../app/microservice-use/create-employee/create-employee.component';
 
+  
+import { BrowserXhr } from '@angular/http';
+import { MsEditEmployeeComponent } from './microservice-use/ms-edit-employee.component';
 
 
 const appRoutes: Routes = [
@@ -60,7 +66,9 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/list', pathMatch: 'full' },
   { path: 'paymentDetail', component: PaymentDetailsComponent },
   { path: 'createStudent', component: CreatestudentComponent },
-  { path: 'StudentList', component: ListStudentsComponent }
+  { path: 'StudentList', component: ListStudentsComponent },
+  { path: 'microservice', component: EmployeeComponent },
+  { path: 'createemployeeMS', component: CreateEmployeeComponentMS }
 ];
 
 @NgModule({
@@ -83,7 +91,10 @@ const appRoutes: Routes = [
     ListStudentsComponent,
     EmployeeFilterPipe,
     TestComponent,
-    TestEmpComponent
+    TestEmpComponent,
+    EmployeeComponent,
+    CreateEmployeeComponentMS,
+    MsEditEmployeeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -99,7 +110,7 @@ const appRoutes: Routes = [
     //BsDatepickerModule.forRoot()
     , AgGridModule.withComponents([])
   ],
-  providers: [PaymentDetailService, EmployeeService, CreateEmployeeCanDeactivateGuardService, StudentServiceService],
+  providers: [BrowserXhr, PaymentDetailService, EmployeeService, CreateEmployeeCanDeactivateGuardService, StudentServiceService, ApiserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

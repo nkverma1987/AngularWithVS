@@ -1,0 +1,60 @@
+
+<div>
+  <div class="row  pull-right">
+    <a [routerLink]="['/microservice']">
+      Back To List
+    </a>
+  </div>
+  <br />
+
+  <form #employeeForm="ngForm" (ngSubmit)="saveEmployee()">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Create Employee</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group" [class.has-error]="name.invalid && name.touched">
+          <label for="name" class="control-label">Name</label>
+          <input id="name"
+                 required type="text"
+                 class="form-control"
+                 name="name"
+                 [(ngModel)]="gatewayService.employee.Name"
+                 #name="ngModel" />
+          <span class="help-block" *ngIf="name.invalid && name.touched">
+            Name is required
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="email" class="control-label">Email</label>
+          <input id="email" type="text" class="form-control" name="email" [(ngModel)]="gatewayService.employee.Email" />
+        </div>
+
+        <div class="form-group">
+          <label for="city" class="control-label">City</label>
+          <input id="city" type="text" class="form-control" name="class" [(ngModel)]="gatewayService.employee.City" />
+        </div>
+
+        <div class="form-group">
+          <label for="department" class="control-label">Department</label>
+          <select class="form-control"
+                  name="department"
+                  [(ngModel)]="gatewayService.employee.DepartmentId">
+            <option [value]="-1">Select Department</option>
+            <option *ngFor="let department of departments"
+                    [value]="department.Id">
+              {{department.Name}}
+            </option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="panel-footer">
+        <button class="btn btn-primary" type="submit" [disabled]="employeeForm.invalid">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+

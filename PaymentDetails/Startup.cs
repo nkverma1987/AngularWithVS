@@ -12,6 +12,7 @@ namespace PaymentDetails
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -22,8 +23,23 @@ namespace PaymentDetails
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Enable CORS
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("AllowAll",
+            //        builder =>
+            //        {
+            //            builder
+            //            .AllowAnyOrigin()
+            //            .AllowAnyMethod()
+            //            .AllowAnyHeader()
+            //            .AllowCredentials();
+            //        });
+            //});
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddJsonOptions(options=> {
+                .AddJsonOptions(options =>
+                {
                     var resolver = options.SerializerSettings.ContractResolver;
                     if (resolver != null)
                         (resolver as DefaultContractResolver).NamingStrategy = null;
@@ -39,6 +55,8 @@ namespace PaymentDetails
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +70,7 @@ namespace PaymentDetails
             {
                 app.UseExceptionHandler("/Error");
             }
+            //app.UseCors("AllowAll");
 
             app.UseStaticFiles();
             app.UseSpaStaticFiles();

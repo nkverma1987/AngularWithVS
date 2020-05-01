@@ -41,4 +41,11 @@ export class StudentServiceService {
   deleteStudent(id: number) {
     return this.http.delete(this.rootURL + 'DeleteStudent?id=' + id);
   }
+
+  //microservice example
+
+  getEmployees() {
+    //return this.http.get("http://localhost:57132/employeelist");
+    return this.http.get("http://localhost:90/employeelist");// url from iis hosting
+  }
 }
