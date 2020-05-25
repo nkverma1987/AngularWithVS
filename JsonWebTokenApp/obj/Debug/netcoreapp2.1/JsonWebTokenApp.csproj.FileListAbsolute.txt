@@ -1,0 +1,14 @@
+E:\VS2017 Demo\Core Demo\Angular\PaymentDetails\JsonWebTokenApp\bin\Debug\netcoreapp2.1\JsonWebTokenApp.deps.json
+E:\VS2017 Demo\Core Demo\Angular\PaymentDetails\JsonWebTokenApp\bin\Debug\netcoreapp2.1\JsonWebTokenApp.runtimeconfig.json
+E:\VS2017 Demo\Core Demo\Angular\PaymentDetails\JsonWebTokenApp\bin\Debug\netcoreapp2.1\JsonWebTokenApp.runtimeconfig.dev.json
+E:\VS2017 Demo\Core Demo\Angular\PaymentDetails\JsonWebTokenApp\bin\Debug\netcoreapp2.1\JsonWebTokenApp.dll
+E:\VS2017 Demo\Core Demo\Angular\PaymentDetails\JsonWebTokenApp\bin\Debug\netcoreapp2.1\JsonWebTokenApp.pdb
+E:\VS2017 Demo\Core Demo\Angular\PaymentDetails\JsonWebTokenApp\obj\Debug\netcoreapp2.1\JsonWebTokenApp.csproj.CoreCompileInputs.cache
+E:\VS2017 Demo\Core Demo\Angular\PaymentDetails\JsonWebTokenApp\obj\Debug\netcoreapp2.1\JsonWebTokenApp.RazorAssemblyInfo.cache
+E:\VS2017 Demo\Core Demo\Angular\PaymentDetails\JsonWebTokenApp\obj\Debug\netcoreapp2.1\JsonWebTokenApp.RazorAssemblyInfo.cs
+E:\VS2017 Demo\Core Demo\Angular\PaymentDetails\JsonWebTokenApp\obj\Debug\netcoreapp2.1\JsonWebTokenApp.AssemblyInfoInputs.cache
+E:\VS2017 Demo\Core Demo\Angular\PaymentDetails\JsonWebTokenApp\obj\Debug\netcoreapp2.1\JsonWebTokenApp.AssemblyInfo.cs
+E:\VS2017 Demo\Core Demo\Angular\PaymentDetails\JsonWebTokenApp\obj\Debug\netcoreapp2.1\JsonWebTokenApp.RazorTargetAssemblyInfo.cache
+E:\VS2017 Demo\Core Demo\Angular\PaymentDetails\JsonWebTokenApp\obj\Debug\netcoreapp2.1\JsonWebTokenApp.dll
+E:\VS2017 Demo\Core Demo\Angular\PaymentDetails\JsonWebTokenApp\obj\Debug\netcoreapp2.1\JsonWebTokenApp.pdb
+E:\VS2017 Demo\Core Demo\Angular\PaymentDetails\JsonWebTokenApp\obj\Debug\netcoreapp2.1\JsonWebTokenApp.csprojAssemblyReference.cache

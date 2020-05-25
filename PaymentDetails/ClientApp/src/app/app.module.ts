@@ -51,9 +51,17 @@ import { EmployeeComponent } from './microservice-use/employee.component';
 import { ApiserviceService } from '../app/microservice-use/apiservice.service';
 import { CreateEmployeeComponentMS } from '../app/microservice-use/create-employee/create-employee.component';
 
-  
+
 import { BrowserXhr } from '@angular/http';
 import { MsEditEmployeeComponent } from './microservice-use/ms-edit-employee.component';
+import { MsCountryComponent } from './microservice-use/country/ms-country/ms-country.component';
+
+import { ApigatewayCountryService } from '../app/microservice-use/country/apigateway-country.service';
+
+//import { ModalModule } from 'ngx-bootstrap/modal';
+
+
+
 
 
 const appRoutes: Routes = [
@@ -69,6 +77,7 @@ const appRoutes: Routes = [
   { path: 'StudentList', component: ListStudentsComponent },
   { path: 'microservice', component: EmployeeComponent },
   { path: 'createemployeeMS', component: CreateEmployeeComponentMS }
+  , { path: 'country', component: MsCountryComponent }
 ];
 
 @NgModule({
@@ -94,7 +103,8 @@ const appRoutes: Routes = [
     TestEmpComponent,
     EmployeeComponent,
     CreateEmployeeComponentMS,
-    MsEditEmployeeComponent
+    MsEditEmployeeComponent,
+    MsCountryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -110,7 +120,7 @@ const appRoutes: Routes = [
     //BsDatepickerModule.forRoot()
     , AgGridModule.withComponents([])
   ],
-  providers: [BrowserXhr, PaymentDetailService, EmployeeService, CreateEmployeeCanDeactivateGuardService, StudentServiceService, ApiserviceService],
+  providers: [BrowserXhr, PaymentDetailService, EmployeeService, CreateEmployeeCanDeactivateGuardService, StudentServiceService, ApiserviceService, ApigatewayCountryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

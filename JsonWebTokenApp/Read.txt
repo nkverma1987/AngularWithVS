@@ -1,0 +1,6 @@
+https://www.youtube.com/watch?v=3l4KHG2mppc&pbjreload=10
+
+Add below nuget packages
+
+1. System.IdentityModel.Tokens.Jwt
+2. System.Runtime.Serialization.Json

@@ -4,4 +4,5 @@ export class Employee {
   Email?: string;
   DepartmentId: string;
   City?: string;
+  Password?: string;
 }

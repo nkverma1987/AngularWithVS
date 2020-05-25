@@ -26,8 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\app\app.component.css" />
-    <None Remove="ClientApp\src\app\app.component.css" />
     <None Remove="ClientApp\src\app\employees\create-employee-can-deactivate-gaurd.service.ts" />
     <None Remove="ClientApp\src\app\employees\employee-filter.pipe.ts" />
     <None Remove="ClientApp\src\app\shared\confirmequalvalidatordirective .ts" />
@@ -39,6 +37,10 @@
     <TypeScriptCompile Include="ClientApp\src\app\employees\employee-filter.pipe.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\confirmequalvalidatordirective .ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\selectrequiredvalidator.directive.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\microservice-use\country\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

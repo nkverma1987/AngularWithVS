@@ -46,6 +46,9 @@ namespace PaymentDetails
 
                 });
             services.AddScoped<IStudentRepository, SQLStudentRepository>();
+
+            services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
+
             var connection = Configuration.GetConnectionString("DBConnection");
             services.AddDbContext<NitishContext>(options =>
             options.UseSqlServer(connection)

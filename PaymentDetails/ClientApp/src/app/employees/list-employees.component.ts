@@ -34,6 +34,7 @@ export class ListEmployeesComponent implements OnInit {
   constructor(private _employeeService: EmployeeService, private _router: Router) { }
 
   ngOnInit() {
+    debugger;
     this._employeeService.getEmployees().subscribe((empList) => {
       this.employees = empList;
       this.filteredEmployees = this.employees;
