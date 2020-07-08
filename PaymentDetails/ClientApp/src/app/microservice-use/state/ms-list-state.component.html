@@ -1,0 +1,33 @@
+<div class="row  pull-right">
+  <a [routerLink]="['/createstatems']">
+    New State
+  </a>
+</div>
+
+<div class="row">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">State Name</th>
+        <th scope="col">Country Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let state of apiGatewayService.states">
+        <td>{{ state.Name }}</td>
+        <td>{{ state.CountryName }}</td>
+        <td>
+          <a [routerLink]="['/createstatems',{stateId:state.Id}]">
+            <span class="glyphicon glyphicon-edit"></span>
+          </a>
+          | <a (click)="deleteState(state.Id)">
+            <span class="glyphicon glyphicon-trash"></span>
+          </a>
+          | <a data-toggle="modal" data-target="#myModal">
+            <span class="glyphicon glyphicon-eye-open"></span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

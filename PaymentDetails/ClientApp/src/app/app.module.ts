@@ -57,6 +57,12 @@ import { MsEditEmployeeComponent } from './microservice-use/ms-edit-employee.com
 import { MsCountryComponent } from './microservice-use/country/ms-country/ms-country.component';
 
 import { ApigatewayCountryService } from '../app/microservice-use/country/apigateway-country.service';
+import { StudentsService } from '../app/microservice-use/students.service';
+import { MsCreateStudentComponent } from './microservice-use/students/ms-create-student.component';
+import { MsCreateStateComponent } from './microservice-use/state/ms-create-state.component';
+import { MsListStateComponent } from './microservice-use/state/ms-list-state.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+
 
 //import { ModalModule } from 'ngx-bootstrap/modal';
 
@@ -78,6 +84,11 @@ const appRoutes: Routes = [
   { path: 'microservice', component: EmployeeComponent },
   { path: 'createemployeeMS', component: CreateEmployeeComponentMS }
   , { path: 'country', component: MsCountryComponent }
+  , { path: 'createstudentms', component: MsCreateStudentComponent }
+  , { path: 'createstatems', component: MsCreateStateComponent }
+  , { path: 'liststatems', component: MsListStateComponent }
+  // wild card routing to redirect page not found page
+  , { path: '**', component: PagenotfoundComponent }
 ];
 
 @NgModule({
@@ -104,7 +115,11 @@ const appRoutes: Routes = [
     EmployeeComponent,
     CreateEmployeeComponentMS,
     MsEditEmployeeComponent,
-    MsCountryComponent
+    MsCountryComponent,
+    MsCreateStudentComponent,
+    MsCreateStateComponent,
+    MsListStateComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -120,7 +135,7 @@ const appRoutes: Routes = [
     //BsDatepickerModule.forRoot()
     , AgGridModule.withComponents([])
   ],
-  providers: [BrowserXhr, PaymentDetailService, EmployeeService, CreateEmployeeCanDeactivateGuardService, StudentServiceService, ApiserviceService, ApigatewayCountryService],
+  providers: [BrowserXhr, PaymentDetailService, EmployeeService, CreateEmployeeCanDeactivateGuardService, StudentServiceService, ApiserviceService, ApigatewayCountryService, StudentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Employee } from '../microservice-use/Model/employee.model';
+import { Student } from '../models/student.model';
 
 
 @Injectable()
 export class ApiserviceService {
 
   employee: Employee;
+
   readonly rootURL = 'http://localhost:90/'
 
   constructor(private http: HttpClient) { }
@@ -45,4 +47,6 @@ export class ApiserviceService {
   //saveEmployee() {
   //  return this.http.post("http://localhost:53157/api/employee/SaveEmployee", this.employee);
   //}
+
+  
 }
